@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Mood } from '../models/mood.classe';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -7,4 +8,6 @@ import { Mood } from '../models/mood.classe';
 export class MoodService {
   Mood!: Mood;
   Moods!: Mood[];
+
+  constructor(private _httpClient: HttpClient) {}
 }

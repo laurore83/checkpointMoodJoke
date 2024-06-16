@@ -10,7 +10,7 @@ import { Observable, map } from 'rxjs';
 export class QuotationService {
   quotation!: Quotation;
   quotations!: Quotation[];
-  private readonly _BASE_URL = `${environment.apiUrl}/joke`;
+  private readonly _BASE_URL = `${environment.apiUrl}/quotation`;
 
   constructor(private _httpClient: HttpClient) {}
 

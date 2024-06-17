@@ -34,6 +34,7 @@ export class MoodPageComponent implements OnDestroy {
       severity: 'success',
       summary: 'Success',
       detail: 'Message partagé ',
+      life: 3000,
     });
   }
 
@@ -58,6 +59,9 @@ export class MoodPageComponent implements OnDestroy {
           this.show();
           form.resetForm();
           this.loadContacts();
+          setTimeout(() => {
+            this.visible = false;
+          }, 5000);
         })
       );
     }

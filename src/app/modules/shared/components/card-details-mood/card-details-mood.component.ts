@@ -16,6 +16,8 @@ export class CardDetailsMoodComponent implements OnInit {
   mood!: Mood;
   quotation!: Quotation; // Change to hold a single quotation
   joke!: Joke;
+  displayQuotation: boolean = true;
+
   constructor(
     private moodService: MoodService,
     private quotationService: QuotationService,
@@ -59,6 +61,7 @@ export class CardDetailsMoodComponent implements OnInit {
   }
   loadAnotherRandomQuotation(): void {
     if (this.mood) {
+      this.displayQuotation = true;
       this.loadQuotations(this.mood.id);
     }
   }
@@ -77,6 +80,7 @@ export class CardDetailsMoodComponent implements OnInit {
   }
   loadAnotherRandomJoke(): void {
     if (this.mood) {
+      this.displayQuotation = false;
       this.loadJokes(this.mood.id);
     }
   }

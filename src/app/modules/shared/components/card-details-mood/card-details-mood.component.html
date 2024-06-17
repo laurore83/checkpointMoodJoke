@@ -6,11 +6,11 @@
         src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
       />
     </ng-template>
-    <div>
+    <div *ngIf="displayQuotation">
       <h3>Citation aléatoire</h3>
       <p>{{ quotation.quotation_text }}</p>
     </div>
-    <div>
+    <div *ngIf="!displayQuotation && joke">
       <h3>Joke aléatoire</h3>
       <p>{{ joke.joke_text }}</p>
     </div>

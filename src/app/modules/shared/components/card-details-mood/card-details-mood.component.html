@@ -7,12 +7,8 @@
       />
     </ng-template>
     <div>
-      <h3>Citations</h3>
-      <ul>
-        <li *ngFor="let quotation of quotations">
-          {{ quotation.quotation_text }}
-        </li>
-      </ul>
+      <h3>Citation aléatoire</h3>
+      <p>{{ quotation.quotation_text }}</p>
     </div>
     <ng-template pTemplate="footer">
       <div class="flex gap-3 mt-1">
@@ -20,7 +16,7 @@
           rounded
           severity="success"
           label="One more"
-          [routerLink]="['/mood', mood.id]"
+          (click)="loadAnotherRandomQuotation()"
           class="w-full"
           styleClass="w-full"
         />

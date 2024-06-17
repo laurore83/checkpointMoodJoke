@@ -12,7 +12,7 @@ import { QuotationService } from '@shared/services/quotation.service';
 })
 export class CardDetailsMoodComponent implements OnInit {
   mood!: Mood;
-  quotations: Quotation[] = [];
+  quotation!: Quotation; // Change to hold a single quotation
 
   constructor(
     private moodService: MoodService,
@@ -44,11 +44,18 @@ export class CardDetailsMoodComponent implements OnInit {
   loadQuotations(moodId: number): void {
     this.quotationService.getQuotationsByMoodId$(moodId).subscribe(
       (quotations) => {
-        this.quotations = quotations;
+        // Select a random quotation
+        const randomIndex = Math.floor(Math.random() * quotations.length);
+        this.quotation = quotations[randomIndex];
       },
       (error) => {
         console.error('Error fetching quotations', error);
       }
     );
+  }
+  loadAnotherRandomQuotation(): void {
+    if (this.mood) {
+      this.loadQuotations(this.mood.id);
+    }
   }
 }

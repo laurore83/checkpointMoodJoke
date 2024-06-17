@@ -16,3 +16,11 @@
   <p-toast />
   <p-button type="submit" rounded label="Partagez"></p-button>
 </form>
+<div class="contacts-list">
+  <h2>Contacts</h2>
+  <ul>
+    <li *ngFor="let contact of contacts">
+      {{ contact.contact_text }}
+    </li>
+  </ul>
+</div>

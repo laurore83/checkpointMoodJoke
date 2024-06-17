@@ -1,0 +1,23 @@
+.activity-form {
+  margin-bottom: 20px;
+}
+
+.contacts-list {
+  margin-top: 20px;
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      background: #f4f4f4;
+      margin-bottom: 5px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
+}

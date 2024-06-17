@@ -13,7 +13,7 @@ import { MessageService } from 'primeng/api';
 })
 export class MoodPageComponent implements OnDestroy {
   value: string = '';
-
+  contacts: Contact[] = [];
   @Output() messageSent = new EventEmitter<void>();
 
   private _subscription: Subscription = new Subscription();
@@ -30,6 +30,19 @@ export class MoodPageComponent implements OnDestroy {
       detail: 'Message partagé ',
     });
   }
+
+  ngOnInit(): void {
+    this.loadContacts();
+  }
+
+  loadContacts(): void {
+    this._subscription.add(
+      this.contactService.getContactList$().subscribe((contacts) => {
+        this.contacts = contacts;
+      })
+    );
+  }
+
   onSubmit(form: NgForm): void {
     if (form.valid) {
       const newContact = new Contact(form.value.message);
@@ -38,6 +51,7 @@ export class MoodPageComponent implements OnDestroy {
           this.messageSent.emit();
           this.show();
           form.resetForm();
+          this.loadContacts();
         })
       );
     }

@@ -14,6 +14,8 @@ import { MessageService } from 'primeng/api';
 export class MoodPageComponent implements OnDestroy {
   value: string = '';
   contacts: Contact[] = [];
+  visible: boolean = false;
+
   @Output() messageSent = new EventEmitter<void>();
 
   private _subscription: Subscription = new Subscription();
@@ -22,6 +24,10 @@ export class MoodPageComponent implements OnDestroy {
     private contactService: ContactService,
     private messageService: MessageService
   ) {}
+
+  showDialog(): void {
+    this.visible = true;
+  }
 
   show() {
     this.messageService.add({

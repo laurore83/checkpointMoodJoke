@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Joke } from '@shared/models/joke.classe';
 import { Mood } from '@shared/models/mood.classe';
 import { Quotation } from '@shared/models/quotation.classe';
+import { JokeService } from '@shared/services/joke.service';
 import { MoodService } from '@shared/services/mood.service';
 import { QuotationService } from '@shared/services/quotation.service';
 
@@ -13,10 +15,11 @@ import { QuotationService } from '@shared/services/quotation.service';
 export class CardDetailsMoodComponent implements OnInit {
   mood!: Mood;
   quotation!: Quotation; // Change to hold a single quotation
-
+  joke!: Joke;
   constructor(
     private moodService: MoodService,
     private quotationService: QuotationService,
+    private jokeService: JokeService,
     private route: ActivatedRoute
   ) {}
 
@@ -26,6 +29,7 @@ export class CardDetailsMoodComponent implements OnInit {
       if (id) {
         this.loadMood(id);
         this.loadQuotations(id);
+        this.loadJokes(id);
       }
     });
   }
@@ -56,6 +60,24 @@ export class CardDetailsMoodComponent implements OnInit {
   loadAnotherRandomQuotation(): void {
     if (this.mood) {
       this.loadQuotations(this.mood.id);
+    }
+  }
+
+  loadJokes(moodId: number): void {
+    this.jokeService.getJokesByMoodId$(moodId).subscribe(
+      (jokes) => {
+        // Select a random joke
+        const randomIndex = Math.floor(Math.random() * jokes.length);
+        this.joke = jokes[randomIndex];
+      },
+      (error) => {
+        console.error('Error fetching jokes', error);
+      }
+    );
+  }
+  loadAnotherRandomJoke(): void {
+    if (this.mood) {
+      this.loadJokes(this.mood.id);
     }
   }
 }

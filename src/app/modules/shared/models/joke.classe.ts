@@ -1,11 +1,11 @@
 export class Joke {
   id: number;
-  text: string;
+  joke_text: string;
   name: string;
 
-  constructor(id: number, text: string, name: string) {
+  constructor(id: number, joke_text: string, name: string) {
     this.id = id;
-    this.text = text;
+    this.joke_text = joke_text;
     this.name = name;
   }
 }

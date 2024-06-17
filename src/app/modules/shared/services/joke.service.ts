@@ -11,19 +11,16 @@ export class JokeService {
   Joke!: Joke;
   Jokes!: Joke[];
 
-  private readonly _BASE_URL = `${environment.apiUrl}/joke`;
-
+  private readonly BASE_URL = `${environment.apiUrl}/mood`;
   constructor(private _httpClient: HttpClient) {}
 
-  getJokeList$(): Observable<Joke[]> {
-    return this._httpClient
-      .get<Joke[]>(this._BASE_URL)
-      .pipe(map((response: Joke[]) => response));
-  }
+  // getJokeList$(): Observable<Joke[]> {
+  //   return this._httpClient
+  //     .get<Joke[]>(this._BASE_URL)
+  //     .pipe(map((response: Joke[]) => response));
+  // }
 
-  getJokeById$(id: number): Observable<Joke> {
-    return this._httpClient
-      .get<Joke>(`${this._BASE_URL}/${id}`)
-      .pipe(map((joke: Joke) => joke));
+  getJokesByMoodId$(moodId: number): Observable<Joke[]> {
+    return this._httpClient.get<Joke[]>(`${this.BASE_URL}/${moodId}/jokes`);
   }
 }

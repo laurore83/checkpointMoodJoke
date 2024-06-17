@@ -10,6 +10,10 @@
       <h3>Citation aléatoire</h3>
       <p>{{ quotation.quotation_text }}</p>
     </div>
+    <div>
+      <h3>Joke aléatoire</h3>
+      <p>{{ joke.joke_text }}</p>
+    </div>
     <ng-template pTemplate="footer">
       <div class="flex gap-3 mt-1">
         <p-button
@@ -24,7 +28,7 @@
           rounded
           severity="success"
           label="A joke"
-          [routerLink]="['/mood', mood.id]"
+          (click)="loadAnotherRandomJoke()"
           class="w-full"
           styleClass="w-full"
         />

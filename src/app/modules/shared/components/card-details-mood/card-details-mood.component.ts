@@ -84,4 +84,14 @@ export class CardDetailsMoodComponent implements OnInit {
       this.loadJokes(this.mood.id);
     }
   }
+  getButtonLabel(): string {
+    return this.displayQuotation ? 'A joke' : 'One more';
+  }
+  getButtonLabelbis(): string {
+    return this.displayQuotation ? 'One more' : 'Quotation';
+  }
+
+  toggleDisplay(): void {
+    this.displayQuotation = !this.displayQuotation;
+  }
 }

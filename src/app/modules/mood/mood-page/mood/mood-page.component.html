@@ -1,5 +1,3 @@
-<p>mood-page works!</p>
-
 <form
   #contactForm="ngForm"
   (ngSubmit)="onSubmit(contactForm)"
@@ -15,5 +13,6 @@
       required
     ></textarea>
   </div>
+  <p-toast />
   <p-button type="submit" rounded label="Partagez"></p-button>
 </form>

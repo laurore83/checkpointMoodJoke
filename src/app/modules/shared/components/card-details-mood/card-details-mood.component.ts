@@ -25,7 +25,7 @@ export class CardDetailsMoodComponent implements OnInit {
       const id = params['id'];
       if (id) {
         this.loadMood(id);
-        // this.loadQuotations(id);
+        this.loadQuotations(id);
       }
     });
   }
@@ -41,14 +41,14 @@ export class CardDetailsMoodComponent implements OnInit {
     );
   }
 
-  // loadQuotations(moodId: number): void {
-  //   this.quotationService.getQuotationsByMoodId$(moodId).subscribe(
-  //     (quotations) => {
-  //       this.quotations = quotations;
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching quotations', error);
-  //     }
-  //   );
-  // }
+  loadQuotations(moodId: number): void {
+    this.quotationService.getQuotationsByMoodId$(moodId).subscribe(
+      (quotations) => {
+        this.quotations = quotations;
+      },
+      (error) => {
+        console.error('Error fetching quotations', error);
+      }
+    );
+  }
 }

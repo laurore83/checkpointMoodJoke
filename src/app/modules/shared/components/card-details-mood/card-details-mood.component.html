@@ -9,7 +9,9 @@
     <div>
       <h3>Citations</h3>
       <ul>
-        <li *ngFor="let quotation of quotations">{{ quotation.text }}</li>
+        <li *ngFor="let quotation of quotations">
+          {{ quotation.quotation_text }}
+        </li>
       </ul>
     </div>
     <ng-template pTemplate="footer">

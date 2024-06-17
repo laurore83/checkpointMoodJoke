@@ -10,19 +10,17 @@ import { Observable, map } from 'rxjs';
 export class QuotationService {
   quotation!: Quotation;
   quotations!: Quotation[];
-  private readonly _BASE_URL = `${environment.apiUrl}/quotation`;
-
+  private readonly BASE_URL = `${environment.apiUrl}/mood`;
   constructor(private _httpClient: HttpClient) {}
 
-  getQuotationList$(): Observable<Quotation[]> {
-    return this._httpClient
-      .get<Quotation[]>(this._BASE_URL)
-      .pipe(map((response: Quotation[]) => response));
-  }
-
+  // getQuotationList$(): Observable<Quotation[]> {
+  //   return this._httpClient
+  //     .get<Quotation[]>(this._BASE_URL)
+  //     .pipe(map((response: Quotation[]) => response));
+  // }
   getQuotationsByMoodId$(moodId: number): Observable<Quotation[]> {
     return this._httpClient.get<Quotation[]>(
-      `${this._BASE_URL}/mood/${moodId}`
+      `${this.BASE_URL}/${moodId}/quotations`
     );
   }
 }

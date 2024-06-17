@@ -17,7 +17,7 @@ export class NavbarComponent {
         routerLink: '/home', // Ajoutez le routerLink si vous avez une route définie pour l'accueil
       },
       {
-        label: 'Mood',
+        label: 'MoodWall',
         icon: 'pi pi-face-smile',
         routerLink: '/mood', // Ajoutez le routerLink si vous avez une route définie pour le mood
       },

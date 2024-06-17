@@ -1,1 +1,27 @@
 <p>mood-page works!</p>
+<!-- <form
+  #contactForm="ngForm"
+  (ngSubmit)="onSubmit(contactForm)"
+  class="activity-form"
+>
+  <app-textarea
+    labelFor="message"
+    labelContent="Votre message"
+    inputId="message"
+    name="message"
+    [rows]="5"
+    #message="ngModel"
+    [form]="contactForm"
+    [(ngModel)]="formData.message"
+  ></app-textarea>
+
+  <div class="btn-container">
+    <app-button-form
+      iconName="arrow-right"
+      (click)="onModal()"
+    ></app-button-form>
+  </div>
+</form> -->
+<div class="card flex justify-content-center">
+  <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="value"></textarea>
+</div>

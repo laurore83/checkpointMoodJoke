@@ -10,6 +10,7 @@ import { LandingPageComponent } from './landing/landing-page/landing-page.compon
 import { SharedModule } from '@shared/modules/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CardDetailsMoodComponent } from './modules/shared/components/card-details-mood/card-details-mood.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,15 @@ import { CardDetailsMoodComponent } from './modules/shared/components/card-detai
     MoodPageComponent,
     LandingPageComponent,
     CardDetailsMoodComponent,
+    MoodPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    HttpClientModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

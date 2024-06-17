@@ -1,5 +1,6 @@
+<h1>Positive MoodWall</h1>
 <div class="card flex justify-content-center">
-  <p-button rounded (click)="showDialog()" label="Partagez" />
+  <p-button rounded (click)="showDialog()" label="Ecrire sur le mur" />
   <p-dialog
     header="Votre pensée positive "
     [modal]="true"
@@ -28,7 +29,6 @@
 </div>
 
 <div class="contacts-list">
-  <h2>Contacts</h2>
   <ul>
     <li *ngFor="let contact of contacts">
       {{ contact.contact_text }}

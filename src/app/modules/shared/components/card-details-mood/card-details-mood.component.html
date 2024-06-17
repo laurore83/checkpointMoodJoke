@@ -1,14 +1,13 @@
+<h1>My Mood</h1>
 <div class="details-mood-container">
   <p-card header="{{ mood.mood_name }}" [style]="{ width: '360px' }">
     <ng-template pTemplate="header">
-      <img
-        alt="Card"
-        src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
-      />
+      <img alt="Card" [src]="mood.mood_img" />
     </ng-template>
     <div *ngIf="displayQuotation">
       <h3>Citation aléatoire</h3>
       <p>{{ quotation.quotation_text }}</p>
+      <p>{{ quotation.quotation_author }}</p>
     </div>
     <div *ngIf="!displayQuotation && joke">
       <h3>Joke aléatoire</h3>

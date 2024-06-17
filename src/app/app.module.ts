@@ -8,6 +8,8 @@ import { FooterComponent } from './components/footer/footer/footer.component';
 import { MoodPageComponent } from '@mood/mood-page/mood/mood-page.component';
 import { LandingPageComponent } from './landing/landing-page/landing-page.component';
 import { SharedModule } from '@shared/modules/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { CardDetailsMoodComponent } from './modules/shared/components/card-details-mood/card-details-mood.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,9 @@ import { SharedModule } from '@shared/modules/shared.module';
     FooterComponent,
     MoodPageComponent,
     LandingPageComponent,
+    CardDetailsMoodComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, SharedModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

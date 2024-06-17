@@ -20,9 +20,9 @@ export class QuotationService {
       .pipe(map((response: Quotation[]) => response));
   }
 
-  getQuotationById$(id: number): Observable<Quotation> {
-    return this._httpClient
-      .get<Quotation>(`${this._BASE_URL}/${id}`)
-      .pipe(map((Quotation: Quotation) => Quotation));
+  getQuotationsByMoodId$(moodId: number): Observable<Quotation[]> {
+    return this._httpClient.get<Quotation[]>(
+      `${this._BASE_URL}/mood/${moodId}`
+    );
   }
 }

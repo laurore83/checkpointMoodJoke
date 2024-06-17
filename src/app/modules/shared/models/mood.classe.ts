@@ -1,11 +1,11 @@
 export class Mood {
   id: number;
-  name: string;
-  img: string;
+  mood_name: string;
+  mood_img: string;
 
-  constructor(id: number, name: string, img: string) {
+  constructor(id: number, mood_name: string, mood_img: string) {
     this.id = id;
-    this.name = name;
-    this.img = img;
+    this.mood_name = mood_name;
+    this.mood_img = mood_img;
   }
 }

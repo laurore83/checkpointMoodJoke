@@ -1,16 +1,17 @@
 <div class="card flex justify-content-center">
-  <p-card
-    *ngFor="let mood of moods"
-    header="{{ mood.mood_name }}"
-    [style]="{ width: '360px' }"
-  >
+  <p-card header="{{ mood.mood_name }}" [style]="{ width: '360px' }">
     <ng-template pTemplate="header">
       <img
         alt="Card"
         src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"
       />
     </ng-template>
-
+    <div>
+      <h3>Citations</h3>
+      <ul>
+        <li *ngFor="let quotation of quotations">{{ quotation.text }}</li>
+      </ul>
+    </div>
     <ng-template pTemplate="footer">
       <div class="flex gap-3 mt-1">
         <p-button

@@ -2,6 +2,12 @@
   margin-bottom: 20px;
 }
 
+.title {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
 .contacts-list {
   margin-top: 20px;
 
@@ -20,4 +26,22 @@
       border-radius: 5px;
     }
   }
+}
+/* card-mood.component.css */
+.contacts-list {
+  position: relative;
+  height: 500px; /* Adjust the height as needed */
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.contacts-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contacts-list li {
+  position: absolute;
+  // transition: all 0.3s ease;
 }

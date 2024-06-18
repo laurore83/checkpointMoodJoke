@@ -6,6 +6,7 @@ import { Quotation } from '@shared/models/quotation.classe';
 import { JokeService } from '@shared/services/joke.service';
 import { MoodService } from '@shared/services/mood.service';
 import { QuotationService } from '@shared/services/quotation.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-card-details-mood',
@@ -17,6 +18,8 @@ export class CardDetailsMoodComponent implements OnInit {
   quotation!: Quotation; // Change to hold a single quotation
   joke!: Joke;
   displayQuotation: boolean = true;
+  audioPlayer: HTMLAudioElement = new Audio(); // Audio player
+  musicSubscription: Subscription | undefined;
 
   constructor(
     private moodService: MoodService,
@@ -36,10 +39,23 @@ export class CardDetailsMoodComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    // Arrêter la lecture et nettoyer les ressources
+    this.audioPlayer.pause();
+    this.audioPlayer.src = '';
+    if (this.musicSubscription) {
+      this.musicSubscription.unsubscribe();
+    }
+  }
+
   loadMood(id: number): void {
     this.moodService.getMoodById$(id).subscribe(
       (mood) => {
         this.mood = mood;
+        // Charger la musique lorsque le mood est chargé
+        if (mood.mood_song) {
+          this.loadMusic(mood.mood_song);
+        }
       },
       (error) => {
         console.error('Error fetching mood', error);
@@ -82,6 +98,36 @@ export class CardDetailsMoodComponent implements OnInit {
     if (this.mood) {
       this.displayQuotation = false;
       this.loadJokes(this.mood.id);
+    }
+  }
+
+  loadMusic(musicLink: string): void {
+    // Arrêter la musique actuelle
+    this.audioPlayer.pause();
+    this.audioPlayer.currentTime = 0;
+
+    // Charger et jouer la nouvelle musique
+    this.audioPlayer.src = musicLink;
+    this.audioPlayer.load(); // Charger le fichier audio
+
+    // S'assurer que le chargement est terminé avant de jouer
+    this.audioPlayer.oncanplaythrough = () => {
+      this.playSong();
+    };
+  }
+
+  playSong(): void {
+    const playPromise = this.audioPlayer.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          // Lecture commencée avec succès
+          console.log('Audio playing');
+        })
+        .catch((error) => {
+          console.error('Error playing audio:', error);
+        });
     }
   }
   getButtonLabel(): string {

@@ -34,6 +34,7 @@
   width: 100%;
   border: 1px solid #ccc;
   overflow: hidden;
+  margin-top: 30px;
 }
 
 .contacts-list ul {
@@ -43,5 +44,6 @@
 
 .contacts-list li {
   position: absolute;
+  background: #f4f4f4;
   // transition: all 0.3s ease;
 }

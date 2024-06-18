@@ -1,6 +1,11 @@
 <div class="title">
   <h1>Positive MoodWall</h1>
-  <p-button rounded (click)="showDialog()" label="Ecrire sur le mur" />
+  <p-button
+    severity="success"
+    rounded
+    (click)="showDialog()"
+    label="Ecrire sur le mur"
+  />
 </div>
 <div class="card flex justify-content-center">
   <p-dialog
@@ -25,7 +30,12 @@
         ></textarea>
       </div>
       <p-toast />
-      <p-button type="submit" rounded label="Partagez"></p-button>
+      <p-button
+        severity="success"
+        type="submit"
+        rounded
+        label="Partagez"
+      ></p-button>
     </form>
   </p-dialog>
 </div>

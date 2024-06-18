@@ -1,6 +1,20 @@
+/* styles.scss ou navbar.component.scss */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+}
+
 .card {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem;
 }
@@ -9,13 +23,10 @@ p-menubar {
   flex: 1;
 }
 
+:host ::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background-color: green !important; /* Change la couleur de l'interrupteur activé en vert */
+}
+
 p-inputSwitch {
   margin-left: auto;
-}
-:host ::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
-  background-color: rgb(
-    31,
-    208,
-    31
-  ) !important; /* Change la couleur de l'interrupteur activé en vert */
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Joke } from '@shared/models/joke.classe';
 import { Mood } from '@shared/models/mood.classe';
@@ -13,13 +13,14 @@ import { Subscription } from 'rxjs';
   templateUrl: './card-details-mood.component.html',
   styleUrls: ['./card-details-mood.component.scss'],
 })
-export class CardDetailsMoodComponent implements OnInit {
+export class CardDetailsMoodComponent implements OnInit, OnDestroy {
   mood!: Mood;
   quotation!: Quotation; // Change to hold a single quotation
   joke!: Joke;
   displayQuotation: boolean = true;
   audioPlayer: HTMLAudioElement = new Audio(); // Audio player
   musicSubscription: Subscription | undefined;
+  isMusicPlaying: boolean = false;
 
   constructor(
     private moodService: MoodService,
@@ -43,6 +44,8 @@ export class CardDetailsMoodComponent implements OnInit {
     // Arrêter la lecture et nettoyer les ressources
     this.audioPlayer.pause();
     this.audioPlayer.src = '';
+    this.audioPlayer.load(); // Charger le fichier audio
+
     if (this.musicSubscription) {
       this.musicSubscription.unsubscribe();
     }
@@ -75,6 +78,7 @@ export class CardDetailsMoodComponent implements OnInit {
       }
     );
   }
+
   loadAnotherRandomQuotation(): void {
     if (this.mood) {
       this.displayQuotation = true;
@@ -94,6 +98,7 @@ export class CardDetailsMoodComponent implements OnInit {
       }
     );
   }
+
   loadAnotherRandomJoke(): void {
     if (this.mood) {
       this.displayQuotation = false;
@@ -104,35 +109,30 @@ export class CardDetailsMoodComponent implements OnInit {
   loadMusic(musicLink: string): void {
     // Arrêter la musique actuelle
     this.audioPlayer.pause();
-    this.audioPlayer.currentTime = 0;
+    this.audioPlayer.src = '';
+    this.audioPlayer.load(); // Charger le fichier audio
 
     // Charger et jouer la nouvelle musique
     this.audioPlayer.src = musicLink;
     this.audioPlayer.load(); // Charger le fichier audio
 
     // S'assurer que le chargement est terminé avant de jouer
-    this.audioPlayer.oncanplaythrough = () => {
-      this.playSong();
-    };
+    this.audioPlayer.oncanplaythrough = () => {};
   }
 
-  playSong(): void {
-    const playPromise = this.audioPlayer.play();
-
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          // Lecture commencée avec succès
-          console.log('Audio playing');
-        })
-        .catch((error) => {
-          console.error('Error playing audio:', error);
-        });
+  playOrStopSong(): void {
+    if (this.isMusicPlaying) {
+      this.audioPlayer.pause();
+    } else {
+      this.audioPlayer.play();
     }
+    this.isMusicPlaying = !this.isMusicPlaying;
   }
+
   getButtonLabel(): string {
     return this.displayQuotation ? 'A joke' : 'One more';
   }
+
   getButtonLabelbis(): string {
     return this.displayQuotation ? 'One more' : 'Quotation';
   }

@@ -1,3 +1,28 @@
-.card {
+:host {
+  display: block;
+  width: 100%;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Trois colonnes de largeur égale */
+  gap: 16px; /* Espace entre les cartes */
+  width: 100%;
+  padding: 16px; /* Optionnel : padding autour du conteneur */
+  justify-items: center;
+  gap: 35px;
+}
+
+p-card {
   box-shadow: 0px 10px 125px -3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px; /* Assurez-vous que les cartes ont une largeur maximale */
+}
+@media (max-width: 768px) {
+  .card-container {
+    box-shadow: 0px 10px 125px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px;
+  }
 }

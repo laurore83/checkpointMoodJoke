@@ -137,6 +137,10 @@ export class CardDetailsMoodComponent implements OnInit, OnDestroy {
     return this.displayQuotation ? 'One more' : 'Quotation';
   }
 
+  getButtonLabelSong(): string {
+    return this.isMusicPlaying ? 'Stop' : 'A song';
+  }
+
   toggleDisplay(): void {
     this.displayQuotation = !this.displayQuotation;
   }

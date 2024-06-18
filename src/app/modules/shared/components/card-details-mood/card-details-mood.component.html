@@ -34,7 +34,7 @@
         <p-button
           rounded
           severity="success"
-          label="A song"
+          [label]="getButtonLabelSong()"
           (click)="playOrStopSong()"
           class="w-full"
           styleClass="w-full"

@@ -11,6 +11,7 @@ import { SharedModule } from '@shared/modules/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CardDetailsMoodComponent } from './modules/shared/components/card-details-mood/card-details-mood.component';
 import { FormsModule } from '@angular/forms';
+import { SwitchComponent } from './modules/shared/components/switch/switch.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     LandingPageComponent,
     CardDetailsMoodComponent,
     MoodPageComponent,
+    SwitchComponent,
   ],
   imports: [
     BrowserModule,

@@ -4,23 +4,29 @@ import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
   items: MenuItem[] = [];
+  checked: boolean = false; // Variable pour l'état du switch
 
   ngOnInit() {
     this.items = [
       {
         label: 'Accueil',
         icon: 'pi pi-home',
-        routerLink: '/home', // Ajoutez le routerLink si vous avez une route définie pour l'accueil
+        routerLink: '/home',
       },
       {
         label: 'MoodWall',
         icon: 'pi pi-face-smile',
-        routerLink: '/mood', // Ajoutez le routerLink si vous avez une route définie pour le mood
+        routerLink: '/mood',
       },
     ];
+  }
+
+  onSwitchChange(event: any) {
+    console.log('Switch state changed:', event.checked);
+    // Ajoutez votre logique ici pour gérer le changement de l'état du switch
   }
 }

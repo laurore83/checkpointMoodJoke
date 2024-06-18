@@ -8,26 +8,26 @@
   align-items: flex-end;
 }
 
-.contacts-list {
-  margin-top: 20px;
+// .contacts-list {
+//   margin-top: 20px;
 
-  h2 {
-    margin-bottom: 10px;
-  }
+//   h2 {
+//     margin-bottom: 10px;
+//   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
+//   ul {
+//     list-style-type: none;
+//     padding: 0;
 
-    li {
-      background: #f4f4f4;
-      margin-bottom: 5px;
-      padding: 10px;
-      border-radius: 5px;
-    }
-  }
-}
-/* card-mood.component.css */
+//     li {
+//       background: #f4f4f4;
+//       margin-bottom: 5px;
+//       padding: 10px;
+//       border-radius: 5px;
+//     }
+//   }
+// }
+
 .contacts-list {
   position: relative;
   height: 500px; /* Adjust the height as needed */
